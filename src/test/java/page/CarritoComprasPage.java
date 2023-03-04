@@ -56,7 +56,11 @@ public class CarritoComprasPage extends BasePage {
     }
 
     public String validarCompra(){
-        wait.until(ExpectedConditions.visibilityOf(lblConfirmacion));
-        return lblConfirmacion.getText();
+        if (lblConfirmacion.isDisplayed()){
+            wait.until(ExpectedConditions.visibilityOf(lblConfirmacion));
+            return lblConfirmacion.getText();
+        }else {
+            return "NO SE PUDO VALIDAR LA COMPRA POR X MOTIVOS";
+        }
     }
 }
