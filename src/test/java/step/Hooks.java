@@ -26,10 +26,11 @@ public class Hooks {
 
     @AfterStep
     public void screenshot(Scenario scenario) {
-        //if (scenario.isFailed()) {
+        //Utiliza el if para capturar en el momento que hay fallos en la automatizacion
+        if (scenario.isFailed()) {
         final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         scenario.attach(screenshot, "image/png", scenario.getName());
-        //}
+        }
     }
 
 
